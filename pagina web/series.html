@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correspondencia entre Número y Cantidad</title>
+    <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .instructions {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .grid div {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .grid .quantity {
+            flex-direction: column;
+        }
+
+        .grid img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #D89216;
+            color: #5b2626;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            color: rgb(18, 5, 5);
+        }
+
+        .title {
+            color: #cf8a13;
+        }
+
+        .number1 {
+            background-color: #fb9da6;
+        }
+
+        .number2 {
+            background-color: #efa44e;
+        }
+
+        .number3 {
+            background-color: #85effd;
+        }
+
+        .number4 {
+            background-color: #a1e887;
+        }
+
+        .number5 {
+            background-color: #8bccfd;
+        }
+
+        .number6 {
+            background-color: #D9BAFF;
+        }
+
+        /* Center align for the back button */
+        .back-button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+  
+    <section class="services section bd-container" id="valores">
+        <div class="back-button-container">
+            <a href="./PanTostado.html" class="button">Regresar</a>
+        </div>
+        <div class="title-container">
+            <span class="section-subtitle">Juegos | Mini-juegos | Dados</span>
+            <h2 class="section-title">Dados</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <p class="instructions">Arrastra el número y suéltalo en la tarjeta que muestra la cantidad correspondiente de puntos en el dado.</p>
+        <div class="grid" id="numbers"></div>
+        <div class="grid" id="quantities"></div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        const totalPairs = 6;
+        let correctPairs = 0;
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const target = ev.target.closest("div");
+            if (checkMatch(data, target.id)) {
+                const draggedElement = document.getElementById(data);
+                target.appendChild(draggedElement);
+                setTimeout(() => {
+                    draggedElement.style.display = 'none';
+                    target.style.display = 'none';
+                }, 500);
+                correctPairs++;
+                if (correctPairs === totalPairs) {
+                    document.getElementById('message').textContent = '¡Correcto! Juego completado. Reiniciando...';
+                    document.getElementById('message').style.color = 'green';
+                    setTimeout(restartGame, 2000);
+                } else {
+                    document.getElementById('message').textContent = '¡Correcto!';
+                    document.getElementById('message').style.color = 'green';
+                }
+            } else {
+                document.getElementById('message').textContent = 'Incorrecto, intenta de nuevo.';
+                document.getElementById('message').style.color = 'red';
+            }
+        }
+
+        function checkMatch(numberId, quantityId) {
+            return numberId.split('-')[1] === quantityId.split('-')[1];
+        }
+
+        function restartGame() {
+            correctPairs = 0;
+            const numbersContainer = document.getElementById('numbers');
+            const quantitiesContainer = document.getElementById('quantities');
+            const message = document.getElementById('message');
+
+            const numbers = shuffleArray(Array.from({ length: 6 }, (_, i) => i + 1));
+            const quantities = shuffleArray(Array.from({ length: 6 }, (_, i) => i + 1));
+
+            numbersContainer.innerHTML = numbers.map(num =>
+                `<div id="num-${num}" draggable="true" ondragstart="drag(event)">
+                    <div class="number number${num}">${num}</div>
+                </div>`
+            ).join('');
+
+            quantitiesContainer.innerHTML = quantities.map(num =>
+                `<div id="qty-${num}" class="quantity" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img src="dado${num}.jpg" alt="dado ${num}">
+                </div>`
+            ).join('');
+
+            message.textContent = '';
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Initialize the game
+        restartGame();
+    </script>
+</body>
+</html>

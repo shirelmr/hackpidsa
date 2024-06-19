@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego de Arrastrar Objetos</title>
+    <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+    <link rel="stylesheet" href="./normalize.css">
+    <style>
+        /* Background Colors */
+        body {
+            background-color: #f0f0f0;
+        }
+
+        /* Text Colors */
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #D89216;
+        }
+
+        .instrucciones {
+            font-family: 'Poppins', sans-serif;
+            color: #707070;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Button Colors */
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #D89216;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Container Colors */
+        .container {
+            text-align: center;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        /* Game Area */
+        .game-area {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .drop-zone {
+            width: 120px;
+            height: 120px;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            position: relative;
+        }
+
+        .drop-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .drag-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            height: 300px;
+            width: 100%;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .drag-item {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            cursor: grab;
+            position: absolute;
+        }
+
+        .drag-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feedback {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+
+        /* Center align for the back button */
+        .back-button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+  
+    <section class="services section bd-container" id="valores">
+        <div class="back-button-container">
+            <a href="./PanTostado.html" class="button">Regresar</a>
+        </div>
+        <div class="title-container">
+            <span class="section-subtitle">Juegos | Mini-juegos | Arrastrar</span>
+            <h2 class="section-title">Minijuego de Arrastrar Objetos</h2>
+            <p class="instrucciones">Don Julián te pidió que organices sus manzanas, sus peras y sus uvas. Arrastra las imágenes de las frutas según sea manzanas, uvas o peras.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <p class="instrucciones">Arrastra cada objeto a la zona correspondiente.</p>
+        <div class="game-area">
+            <div class="drop-zone" id="red-zone" data-color="red">
+                <img src="rojo.png" alt="Rojo" class="drop-image">
+            </div>
+            <div class="drop-zone" id="blue-zone" data-color="blue">
+                <img src="azul.png" alt="Azul" class="drop-image">
+            </div>
+            <div class="drop-zone" id="green-zone" data-color="green">
+                <img src="verde.png" alt="Verde" class="drop-image">
+            </div>
+        </div>
+        <div class="drag-items" id="drag-items">
+            <div class="drag-item" draggable="true" data-color="red">
+                <img src="rojo.png" alt="Rojo">
+            </div>
+            <div class="drag-item" draggable="true" data-color="blue">
+                <img src="azul.png" alt="Azul">
+            </div>
+            <div class="drag-item" draggable="true" data-color="green">
+                <img src="verde.png" alt="Verde">
+            </div>
+            <div class="drag-item" draggable="true" data-color="red">
+                <img src="rojo.png" alt="Rojo">
+            </div>
+            <div class="drag-item" draggable="true" data-color="blue">
+                <img src="azul.png" alt="Azul">
+            </div>
+            <div class="drag-item" draggable="true" data-color="green">
+                <img src="verde.png" alt="Verde">
+            </div>
+        </div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+    <script src="./jsFrutas.js"></script>
+</body>
+</html>

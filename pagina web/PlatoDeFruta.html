@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memorama</title>
+    <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="services section bd-container" id="valores">
+        <a href="./PanTostado.html" class="button">Regresar</a>
+        <div class="title-container">
+            <span class="section-subtitle">Juegos | Mini-juegos | Memoria</span>
+            <h2 class="section-title">Memoria</h2>
+        </div>
+    </section>
+
+    <section class="memorama-section">
+        <label for="card-count">Número de cartas (par): </label>
+        <input type="number" id="card-count" min="2" max="20" step="2" value="12">
+        <button onclick="startGame()">Empezar Juego</button>
+        <div id="game-board"></div>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>

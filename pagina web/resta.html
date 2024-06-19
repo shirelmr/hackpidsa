@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTA</title>
+    <link rel="shortcut icon" href="./faviconpidsa.png" type="image/x-icon">
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./aprendizajeCSS.css">
+</head>
+<body>
+    <header class="hero">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <img src="./PIDSA.png" alt="Logo" class="nav__logo-img">
+                <h2 class="nav__title">APRENDIZAJE - RESTA</h2>
+            </div>
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="index.html" class="nav__links">INICIO</a>
+                </li>
+                <li class="nav__items">
+                    <a href="aprendizaje.html" class="nav__links">APRENDIZAJE</a>
+                </li>
+                <li class="nav__items">
+                    <a href="juegos.html" class="nav__links">JUEGOS</a>
+                </li>
+                <li class="nav__items">
+                    <a href="practica.html" class="nav__links">PRACTICA</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#" class="nav__links">user_0000</a>
+                </li>
+                <img class="imgUsuario" src="ImgUsuario.png">
+            </ul>
+        </nav>
+
+        <section class="container regresar-container">
+            <a href="./aprendizaje.html" class="cta regresar"> Regresar</a>
+        </section>
+
+        <section class="hero__container container">
+            <h1 class="hero__title">¡Vamos a aprender a restar!</h1>
+        </section>
+    </header>
+    
+    <main class="container">
+        
+        <section class="section container video-section">
+            <h2 class="subtitle">Este es un pequeño video que te puede ayudar a aprender a restar</h2>
+            <p class="section__paragraph">Puedes ver el siguiente video para aprender un poco más.</p>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/42vjqtleG9E?si=VgBojUGCRNE1ndyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        
+        <section class="section container juego-section">
+            <h2 class="subtitle">Juego de Resta con Bolitas</h2>
+            <p class="section__paragraph">Con las flechas de los cuadros amarillos, puedes añadir o quitar bolitas rosas y azules.</p>
+            <p class="section__paragraph">Mira lo que pasa al cambiar el número de bolitas amarillas y azules.</p>
+            <p class="section__paragraph">Las bolitas rosas serán el resultado de su resta.</p>
+            <div class="container">
+                <div id="number1" class="balls"></div>
+                <div id="number2" class="balls"></div>
+                <div class="input-container">
+                    <input type="number" id="input1" placeholder="0" min="0" max="10" oninput="generateBalls(1)">
+                    <span class="operator">-</span>
+                    <input type="number" id="input2" placeholder="0" min="0" max="10" oninput="generateBalls(2)">
+                    <span class="operator">=</span>
+                    <input type="number" id="result" placeholder="0" readonly>
+                </div>
+                <h1 class="resultado-title">Resultado</h1>
+                <div id="result-balls" class="balls"></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer container">
+        <p>&copy; 2024 Aprende Matemáticas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="./jsAprendizaje_Resta.js"></script>
+</body>
+</html>

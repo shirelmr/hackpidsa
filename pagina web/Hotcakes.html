@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Responsive code-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Boxicons link-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="./faviconpidsa.png" type="image/x-icon">
+        <!--CSS Link-->
+        <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+        <!--Title-->
+        <title>Pan tostado</title>
+
+        <style>
+            /* Background Colors */
+            body {
+                background-color: #f0f0f0;
+            }
+    
+            /* Text Colors */
+            h1, h2 {
+                font-family: 'Poppins', sans-serif;
+                color: #D89216;
+            }
+    
+            .instrucciones {
+                font-family: 'Poppins', sans-serif;
+                color: #707070;
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+    
+            /* Button Colors */
+            .button {
+                padding: 10px 20px;
+                font-size: 16px;
+                margin-top: 20px;
+                cursor: pointer;
+                background-color: #D89216;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+            }
+    
+            .button:hover {
+                background-color: #2980b9;
+            }
+    
+            /* Container Colors */
+            .container {
+                text-align: center;
+                margin: 20px auto;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+            }
+    
+            /* Game Area */
+            .game-area {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 20px;
+            }
+    
+            .drop-zone {
+                width: 120px;
+                height: 120px;
+                border: 2px dashed #ccc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+                position: relative;
+            }
+    
+            .drop-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    
+            .drag-items {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                position: relative;
+                height: 300px;
+                width: 100%;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+            }
+    
+            .drag-item {
+                width: 100px;
+                height: 100px;
+                margin: 10px;
+                cursor: grab;
+                position: absolute;
+            }
+    
+            .drag-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    
+            .feedback {
+                font-size: 20px;
+                margin-top: 20px;
+                color: #2c3e50;
+            }
+    
+            /* Center align for the back button */
+            .back-button-container {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+
+
+        
+<!--valores-->
+<section class="services section bd-container" id="valores">
+    <a href="./indexMealBreakFinal.html" class="button"> Regresar</a>
+    <span class="section-subtitle">Práctica | Actividades</span>
+    <h2 class="section-title">¿Que tema quieres practicar?</h2>
+   
+    <!--row01-->
+    <div class="services__container  bd-grid">
+
+        <div class = "food-item desayuno" id="lista-cursos">
+            <div class="fourColumns">
+                <div class="card">
+                    <img src="suma.png"class="imagenCard">
+                    <div class="info-card">
+                        <h4>Suma</h4>
+                        <span class="menu__detail"><i class='bx bx-time' ></i> 15min <i class='bx bx-star'></i> Facil</span>
+                        <br>
+                        <span class="menu__detail">Suma el numero de bolitas que te aparecen y comprueba tu respuesta</span>
+                        <br>
+                        <br>
+                        <br>
+                        <a href="./sum_balls.html" class="button-primary button input agregar-carrito" 
+                        style="position: absolute; bottom: 0; right: 0; display: flex; padding: .625rem .813rem; border-radius: .5rem 0 .5rem 0;" data-id="1"> Jugar </a>
+                    </div>
+                </div>
+            </div>
+
+        <div class = "food-item desayuno" id="lista-cursos">
+            <div class="fourColumns">
+                 <div class="card">
+                    <img src="resta.png"class="imagenCard">
+                    <div class="info-card">
+                        <h4>Resta</h4>
+                        <span class="menu__detail"><i class='bx bx-time' ></i> 15min <i class='bx bx-star'></i> Facil</span>
+                        <br>
+                        <span class="menu__detail">Resta el numero de bolitas que te aparecen y comprueba tu respuesta</span>
+                        <br>
+                        <br>
+                        <br>
+                        <a href="./substract_balls-2.html" class="button-primary button input agregar-carrito" 
+                        style="position: absolute; bottom: 0; right: 0; display: flex; padding: .625rem .813rem; border-radius: .5rem 0 .5rem 0;" data-id="1">Jugar</a>
+                    </div>
+                </div>
+            </div>
+        <div class = "food-item desayuno" id="lista-cursos">
+            <div class="fourColumns">
+                <div class="card">
+                    <img src="multiplicacion.png"class="imagenCard">
+                    <div class="info-card">
+                        <h4>Multiplicacion</h4>
+                        <span class="menu__detail"><i class='bx bx-time' ></i> 20min <i class='bx bx-star'></i> Medio</span>
+                        <br>
+                        <span class="menu__detail">Realiza la multiplicacion y comprueba tus respuestas</span>
+                        <br>
+                        <br>
+                        <br>
+                        <a href="./multiply_balls.html" class="button-primary button input agregar-carrito" 
+                        style="position: absolute; bottom: 0; right: 0; display: flex; padding: .625rem .813rem; border-radius: .5rem 0 .5rem 0;" data-id="1">Jugar</a>
+                    </div>
+                </div>
+            </div>
+</section>
+        <!--scrollReveal-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--jsCode-->
+        <script src="js/jsStylesMealBreakFinal.js"></script>
+    </body>
+</html>

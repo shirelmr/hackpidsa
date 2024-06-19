@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contar bolas</title>
+    <style>
+        /* Background Colors */
+        body {
+            background-color: #f0f0; /* Light gray background */
+        }
+
+        /* Text Colors */
+        h1, h2 {
+            font-family: Arial, sans-serif;
+            color: #D89216; /* Dark slate gray for headings */
+        }
+
+        .instrucciones {
+            font-family: Arial, sans-serif;
+            color: #707070;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Ball Colors */
+        .ball {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: #ffcc00; /* Default yellow balls */
+        }
+
+        .ball1 {
+            background-color: #ffcc00; /* Yellow balls */
+        }
+
+        .ball2 {
+            background-color: #00ccff; /* Light blue balls */
+        }
+
+        .ball3 {
+            background-color: #ff66cc; /* Pink balls */
+        }
+
+        /* Button Colors */
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #3498db; /* Blue button background */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
+        /* Input Colors */
+        input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #cccccc; /* Light gray border */
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Container Colors */
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #ffffff; /* White container background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        /* Message Colors */
+        #mensaje {
+            color: #2c3e50; /* Dark slate gray text */
+        }
+
+        /* Ball Specific Colors (Example) */
+        .balls .ball:nth-child(odd) {
+            background-color: #ffcc00; /* Yellow for odd balls */
+        }
+
+        .balls .ball:nth-child(even) {
+            background-color: #00ccff; /* Light blue for even balls */
+        }
+
+        /* Center align for the back button */
+        .back-button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="cssStylesMealBreakFinal.css">
+  
+    <section class="services section bd-container" id="valores">
+        <div class="back-button-container">
+            <a href="./PanTostado.html" class="button">Regresar</a>
+        </div>
+        <div class="title-container">
+            <span class="section-subtitle">Juegos | Mini-juegos | Contar</span>
+            <h2 class="section-title">Contar bolitas</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <p class="instrucciones">Cuenta el número de bolitas que ves abajo y escribe el número en el cuadro de entrada. Luego haz clic en "Verificar" para comprobar tu respuesta.</p>
+        <div id="balls-container" class="balls"></div>
+        <div class="input-container">
+            <input type="number" id="user-input" placeholder="0" min="0" max="20">
+            <button class="button" onclick="verificarConteo()">Verificar</button>
+        </div>
+        <h2 id="mensaje"></h2>
+        <button class="button" onclick="generarBolitas()">Generar Nuevas Bolitas</button>
+    </div>
+    <script>
+        let totalBolitas = 0;
+
+        function generarBolitas() {
+            const container = document.getElementById('balls-container');
+            container.innerHTML = '';
+            totalBolitas = Math.floor(Math.random() * 20) + 1; // Genera entre 1 y 20 bolitas
+
+            for (let i = 0; i < totalBolitas; i++) {
+                const ball = document.createElement('div');
+                ball.className = 'ball';
+                container.appendChild(ball);
+            }
+
+            document.getElementById('user-input').value = '';
+            document.getElementById('mensaje').textContent = '';
+        }
+
+        function verificarConteo() {
+            const userInput = parseInt(document.getElementById('user-input').value);
+            const mensaje = document.getElementById('mensaje');
+
+            if (userInput === totalBolitas) {
+                mensaje.textContent = '¡Correcto! Hay ' + totalBolitas + ' bolitas.';
+                mensaje.style.color = 'green';
+            } else {
+                mensaje.textContent = 'Incorrecto. Inténtalo de nuevo.';
+                mensaje.style.color = 'red';
+            }
+        }
+
+        // Genera bolitas al cargar la página
+        window.onload = generarBolitas;
+    </script>
+</body>
+</html>
